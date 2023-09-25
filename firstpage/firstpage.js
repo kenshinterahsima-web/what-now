@@ -8,9 +8,8 @@ const buttonClose = document.getElementsByClassName('modalClose')[0];
 // ボタンがクリックされた時
 buttonOpen.addEventListener('click', redirectToAnotherPage);
 function redirectToAnotherPage() {
-  const newPageURL = 'file:///Users/terashimakenshin/share-site-vtn/mainpage/index.html';
-
-  window.location.href = newPageURL;
+  window.location.href ='file:///Users/kenshinterashima/Desktop/simple-site/mainpage/index.html';
+  ;
 }
 
 // バツ印がクリックされた時
