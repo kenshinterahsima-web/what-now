@@ -5,20 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="script.js"></script>
-    <title>PracticeSite</title>
+    <title>Monkeys Site</title>
 </head>
-<header>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Access</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-</header>
 <body>
-    <h1>猿の写真貼ってあるサイト</h1>
+    <header>
+        <div class="logo">
+            <a href="#top"><img src="images/monkey.jpeg" alt="Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#top">HOME</a></li>
+                <li><a href="#access">ACCESS</a></li>
+                <li><a href="#section1">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <div class="humburger-menu">
+                <div class="btn">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </div>
+                <div id = "top" class="header_container">
+                    <div class="item">
+                        <ul>
+                            <li><a href="#top">HOME</a></li>
+                            <li><a href="#access">ACCESS</a></li>
+                            <li><a href="#section1">CONTACT</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <h1>Monkeys Site</h1>
     <div class="grid-container">
         <div class="grid-item">
             <img src="images/ギター猿.jpg" alt="ギターを弾く男性">
@@ -56,14 +76,10 @@
             <img src="images/ギター猿.jpg" alt="ギターを弾く男性">
             <p>〇〇円</p>
         </div>
-    </div>  
-<div class="GoogleMap">
-    <div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d815.393144357815!2d136.87835433849364!3d35.167279047113865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6003776f38beb8ed%3A0x80182b01a648df3b!2z44OQ44Oz44K_44Oz44Ky44O844Og44Ki44Kr44OH44Of44O8772c44OQ44Oz44K_44Oz5ZCN5Y-k5bGL5qChIO-8keWPt-mkqA!5e0!3m2!1sja!2sjp!4v1694145178782!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-</div>  
+
 <div class="table">
-    <h2>＜イベント情報＞</h2>
+    <h2>　　　　　　＜イベント情報＞　　　　　　</h2>
     <table border="1">
     <tr>
     <td>9月26日</td><td>しんの誕生日</td>
@@ -82,7 +98,15 @@
     </tr>
 </table>
 </div>
-<div class="Form">
+<div id ="access" class="GoogleMap">
+    <h2>＜ACCESS＞</h2>
+    <div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d815.393144357815!2d136.87835433849364!3d35.167279047113865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6003776f38beb8ed%3A0x80182b01a648df3b!2z44OQ44Oz44K_44Oz44Ky44O844Og44Ki44Kr44OH44Of44O8772c44OQ44Oz44K_44Oz5ZCN5Y-k5bGL5qChIO-8keWPt-mkqA!5e0!3m2!1sja!2sjp!4v1694145178782!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+
+<form id="contact-form" onsubmit="return submitForm()">
+    <div id = "section1" class="Form">
     <h2>＜お問い合わせフォーム＞</h2>
     <div class="Form-Item">
       <p class="Form-Item-Label">
@@ -108,16 +132,20 @@
     </div>
     <input type="submit" class="Form-Btn" value="送信する">
   </div>
+</form>
+<div id="confirmation-message" style="display: none;">送信しました。</div>
   <div id="loading-screen">
     <p>ダウンロード中...</p>
   </div>
   <button id="reload-button">ページの再読み込み</button>
   <footer>
     <div class="social-icons">
-        <a href="https://www.instagram.com/" target="_blank"><img src="images/icon_062470_256.jpg" alt="Instagram"></a>
-        <a href="https://twitter.com/?lang=ja" target="_blank"><img src="images/xicon.jpeg" alt="Twitter"></a>
+        <a href="https://www.instagram.com/" target="_blank"><img src="images/Instagram_Glyph_Gradient 2.jpeg" alt="Instagram"></a>
+        <a href="https://twitter.com/?lang=ja" target="_blank"><img src="images/logo-black.jpeg" alt="Twitter"></a>
     </div>
-    <p>&copy; 2023 Simplesite</p>
+    <div id="top" class="last">
+    <a href="#top"><p>&copy; 2023 Simple Site</p></a>
+    </div>
 </footer>
 </body>
 </html>
