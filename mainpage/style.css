@@ -1,54 +1,155 @@
-body {
-  background-color: #c5d1ce;
-}
-
+/* ヘッダー全体のスタイル */
 header {
-  background-color: #9ca4b9;
-  color: #fff;
-  padding: 10px 0;
-  text-align: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  color: #000000; /* ヘッダーのテキストカラー */
+  padding: 20px 0; /* 上下の余白 */
+  display: flex; /* ロゴとナビゲーションを横並びに配置 */
+  justify-content: space-between; /* ロゴとナビゲーションを水平に配置 */
+  align-items: center;
+  /* transition: position 0.1s ease; */
 }
 
 .fixed-header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
+  background-color: #ffffff; /* ヘッダーの背景色を設定 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* ドロップシャドウを追加 */
+  z-index: 999; /* 他の要素よりも上に表示 */
+}
+
+/* ロゴのスタイル */
+.logo img {
+  width: 70px; /* ロゴの幅 */
+  height: auto; /* アスペクト比を維持 */
+  margin-left: 30px;
+}
+
+header nav {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* ナビゲーションメニューのスタイル */
+header nav ul {
+  list-style: none; /* 箇条書きの点を削除 */
+  padding: 0; /* メニューの内側の余白を削除 */
+
+}
+
+header ul li {
+  display: inline; /* メニューアイテムを横並びに配置 */
+  margin-right: 100px; /* メニューアイテム間の右側の余白 */
+}
+
+header nav ul li a {
+  text-decoration: none; /* リンクの下線を削除 */
+  color: #000000; /* メニューアイテムのテキストカラー */
+  font-weight: bold; /* テキストを太字にする */
+  font-size: 22px; /* テキストのフォントサイズ */
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
-nav ul {
+body {
+  background-color: #ffffff;
+}
+
+.btn {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background-color: #333333;
+}
+
+.btn i {
+  position: absolute;
+  left: 10px;
+  width: 40px;
+  height: 2px;
+  background-color: rgb(255, 255, 255);
+  transition: .5s;
+}
+
+.btn i:nth-of-type(1) {
+  top: 20px;
+}
+.btn i:nth-of-type(2) {
+  top: 30px;
+}
+
+.btn i:nth-of-type(3) {
+  top: 40px;
+}
+
+.btn.active i:nth-of-type(1) {
+  transform:translateY(10px) rotate(45deg);
+}
+.btn.active i:nth-of-type(2) {
+  opacity: 0;
+}
+.btn.active i:nth-of-type(3) {
+  transform:translateY(-10px) rotate(-45deg);
+}
+
+.header_container {
+  position: fixed;
+  top: 0;
+  left: -20%;
+  width: 20%;
+  height: 100%;
+  background-color: white;
+  color: black;
+  z-index: 101;
+  opacity: 0;
+  pointer-events: none;
+  transition: left 0.3s ease;
+}
+
+.header_container.active {
+  opacity: 0.8;
+  pointer-events: auto;
+  left: 0;
+}
+
+.btn.active + .header_container {
+  left: 0;
+}
+
+.item {
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  display: flex;
+  list-style: none;
+}
+
+.item a {
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.item ul {
   list-style: none;
   padding: 0;
+  text-align: center;
 }
 
-nav ul li {
-  display: inline;
-  margin-right: 20px;
-}
-
-nav ul li:last-child {
-  margin-right: 0;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
+.item ul li {
+  margin-bottom: 50px;
 }
 
 h1{
   text-align: center;
-  margin: 40px 0;
   font-size: 35px;
-  background-color: #799c93;
+  background-color: #333333;
+  color: #ffffff;
   padding-top: 30px;
   padding-bottom: 30px;
-  margin-top: 80px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .grid-container {
@@ -70,22 +171,23 @@ h1{
   height: auto; /* アスペクト比を維持 */
 }
 
-.GoogleMap {
-  text-align: center;
-  margin: 30px;
-}
 
 .table {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 720px;
 }
 
 /* オプション: h2 要素にスタイルを追加してセンタリングを強調 */
 .table h2 {
   text-align: center;
   margin: 20px 0;
-  background-color: #799c93;
+  background-color: #333;
+  color: #ffffff;
 
 }
 
@@ -103,6 +205,21 @@ h1{
   text-align: center;
 }
 
+.GoogleMap {
+  text-align: center;
+  margin: 30px;
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 720px;
+}
+
+.GoogleMap h2 {
+  text-align: center;
+  color: #ffffff;
+  background-color: #333;
+}
+
 .Form {
   margin-top: 80px;
   margin-left: auto;
@@ -111,7 +228,8 @@ h1{
 }
 .Form h2 {
   text-align: center;
-  background-color: #799c93;
+  background-color: #333;
+  color: #ffffff;
 
 }
 @media screen and (max-width: 480px) {
@@ -171,7 +289,7 @@ h1{
   width: 48px;
   display: inline-block;
   text-align: center;
-  background: #5bc8ac;
+  background: #333;
   color: #fff;
   font-size: 14px;
 }
@@ -238,7 +356,7 @@ h1{
   width: 280px;
   display: block;
   letter-spacing: 0.05em;
-  background: #5bc8ac;
+  background: #333;
   color: #fff;
   font-weight: bold;
   font-size: 20px;
@@ -265,8 +383,35 @@ h1{
   margin-top: 20px; /* 上部の余白を調整（必要に応じて変更） */
 }
 
-
-
+/* styles.css */
 footer {
-  margin: 50px 0;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
 }
+
+.social-icons {
+  margin-bottom: 20px;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.last a{
+  color: white;
+  text-decoration: none;
+}
+
+p {
+  font-size: 14px;
+}
+
