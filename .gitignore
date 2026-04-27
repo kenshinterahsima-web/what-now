@@ -1,0 +1,89 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS system directories
+Library/
+Desktop/
+Documents/
+Downloads/
+Movies/
+Music/
+Pictures/
+Public/
+Sites/
+Applications/
+Introduction/
+
+# Local development
+Local Sites/
+
+# Shell
+.zshrc
+.zprofile
+.zlogin
+.zsh_history
+.zsh_sessions/
+.profile
+.mkshrc
+.lesshst
+
+# Git config
+.gitconfig
+.gitignore_global
+
+# SSH (never track)
+.ssh/
+
+# Editor & IDE
+.vscode/
+.cursor/
+.vim/
+.viminfo
+
+# Node
+.nodebrew/
+.npm/
+.nvm/
+
+# Flutter / Dart
+.flutter
+.flutter-devtools/
+.dart/
+.dart-tool/
+.dartServer/
+.pub-cache/
+
+# Android / Gradle
+.gradle/
+
+# Ruby
+.rvm/
+
+# PuTTY
+.putty/
+
+# Swift
+.swiftpm/
+
+# AI tools
+.claude/
+.claude.json
+.claude.json.backup
+.codex/
+.gemini/
+.copilot/
+.emulator_console_auth_token
+
+# Cache / config (OS managed)
+.cache/
+.config/
+.local/
+.gk/
+
+# Images in home root
+*.png
+*.jpg
+*.jpeg
+*.webp
