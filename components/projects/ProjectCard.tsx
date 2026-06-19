@@ -9,10 +9,11 @@ import { formatDateShortJP } from '@/lib/date'
 interface ProjectCardProps {
   project: Project
   dragHandle?: ReactNode
+  editButton?: ReactNode
   isDragging?: boolean
 }
 
-export function ProjectCard({ project, dragHandle, isDragging = false }: ProjectCardProps) {
+export function ProjectCard({ project, dragHandle, editButton, isDragging = false }: ProjectCardProps) {
   return (
     <Card
       className={cn(
@@ -49,6 +50,11 @@ export function ProjectCard({ project, dragHandle, isDragging = false }: Project
           </div>
         </CardContent>
       </div>
+      {editButton && (
+        <div className="absolute left-4 top-4 z-10">
+          {editButton}
+        </div>
+      )}
       {dragHandle}
     </Card>
   )

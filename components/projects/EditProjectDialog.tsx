@@ -3,17 +3,20 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { Pencil } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { cn } from '@/lib/utils'
 import type { Project } from '@/types'
 
 interface EditProjectDialogProps {
   project: Project
+  iconOnly?: boolean
 }
 
-export function EditProjectDialog({ project }: EditProjectDialogProps) {
+export function EditProjectDialog({ project, iconOnly = false }: EditProjectDialogProps) {
   const [open, setOpen] = useState(false)
   const [name, setName] = useState(project.name)
   const [client, setClient] = useState(project.client)
@@ -52,11 +55,15 @@ export function EditProjectDialog({ project }: EditProjectDialogProps) {
     <Dialog open={open} onOpenChange={(o) => { setOpen(o); if (!o) resetForm() }}>
       <DialogTrigger render={
         <Button
-          variant="outline"
-          className="h-10 w-full justify-start rounded-[6px] border-black/5 bg-white/70 px-4 text-sm font-medium text-[#515154] hover:bg-white hover:text-[#1d1d1f]"
+          variant="ghost"
+          className={cn(
+            iconOnly
+              ? 'flex size-9 items-center justify-center rounded-[6px] border border-black/5 bg-white/80 text-[#8a8a8f] shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur hover:bg-white hover:text-[#1d1d1f]'
+              : 'h-10 w-full justify-start rounded-[6px] border border-black/5 bg-white/70 px-4 text-sm font-medium text-[#515154] hover:bg-white hover:text-[#1d1d1f]'
+          )}
         />
       }>
-        ✎ 案件情報を編集
+        {iconOnly ? <Pencil className="size-4" aria-hidden="true" /> : '✎ 案件情報を編集'}
       </DialogTrigger>
       <DialogContent className="max-w-md">
         <DialogHeader>

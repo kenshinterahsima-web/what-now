@@ -5,6 +5,7 @@ import type { PointerEvent } from 'react'
 import { GripVertical, RotateCcw } from 'lucide-react'
 import type { Project } from '@/types'
 import { ProjectCard } from '@/components/projects/ProjectCard'
+import { EditProjectDialog } from '@/components/projects/EditProjectDialog'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
@@ -212,6 +213,7 @@ export function ProjectBoard({ activeProjects, doneProjects }: ProjectBoardProps
                   <ProjectCard
                     project={project}
                     isDragging={dragState?.id === project.id}
+                    editButton={<EditProjectDialog project={project} iconOnly />}
                     dragHandle={
                       <button
                         type="button"
@@ -241,7 +243,7 @@ export function ProjectBoard({ activeProjects, doneProjects }: ProjectBoardProps
             <p className="text-sm leading-6 text-[#6e6e73]">{done.length}件の案件が完了しています</p>
           </div>
           <div className="grid grid-cols-1 gap-4 opacity-55 sm:grid-cols-2 lg:grid-cols-3">
-            {done.map((project) => <ProjectCard key={project.id} project={project} />)}
+            {done.map((project) => <ProjectCard key={project.id} project={project} editButton={<EditProjectDialog project={project} iconOnly />} />)}
           </div>
         </section>
       )}
