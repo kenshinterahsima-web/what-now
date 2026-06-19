@@ -1,0 +1,60 @@
+'use client'
+
+import Image from 'next/image'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { createClient } from '@/lib/supabase/client'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
+
+export default function LoginPage() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const router = useRouter()
+
+  async function handleLogin(e: React.FormEvent) {
+    e.preventDefault()
+    setLoading(true)
+    setError('')
+    const supabase = createClient()
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    if (error) {
+      setError('メールアドレスまたはパスワードが正しくありません')
+      setLoading(false)
+      return
+    }
+    router.push('/')
+    router.refresh()
+  }
+
+  return (
+    <div className="bg-gray-50" style={{ minHeight: '100dvh', display: 'grid', placeItems: 'center' }}>
+      <Card className="w-full max-w-sm">
+        <CardHeader className="flex flex-col items-center gap-2" style={{ padding: '2.5rem 2rem 1.5rem' }}>
+          <Image src="/logo.svg" alt="What NOW?" width={148} height={19} priority />
+          <p className="text-sm text-gray-500">制作進捗管理</p>
+        </CardHeader>
+        <CardContent style={{ padding: '0 2rem 2.5rem' }}>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">メールアドレス</Label>
+              <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">パスワード</Label>
+              <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="current-password" />
+            </div>
+            {error && <p className="text-sm text-red-500">{error}</p>}
+            <Button type="submit" className="w-full h-12 text-base" disabled={loading}>
+              {loading ? 'ログイン中...' : 'ログイン'}
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
