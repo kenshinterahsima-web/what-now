@@ -8,19 +8,12 @@ import { formatDateShortJP } from '@/lib/date'
 
 interface ProjectCardProps {
   project: Project
-  dragHandle?: ReactNode
   editButton?: ReactNode
-  isDragging?: boolean
 }
 
-export function ProjectCard({ project, dragHandle, editButton, isDragging = false }: ProjectCardProps) {
+export function ProjectCard({ project, editButton }: ProjectCardProps) {
   return (
-    <Card
-      className={cn(
-        'group relative h-full cursor-pointer overflow-hidden rounded-[6px] border border-black/5 bg-white/72 shadow-[0_18px_60px_rgba(0,0,0,0.045)] backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_24px_70px_rgba(0,0,0,0.08)]',
-        isDragging && 'scale-[1.02] bg-white opacity-95 shadow-[0_28px_90px_rgba(0,0,0,0.16)] ring-1 ring-black/10'
-      )}
-    >
+    <Card className="group relative h-full cursor-pointer overflow-hidden rounded-[6px] border border-black/5 bg-white/72 shadow-[0_18px_60px_rgba(0,0,0,0.045)] backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_24px_70px_rgba(0,0,0,0.08)]">
       <Link href={`/projects/${project.id}`} className="absolute inset-0 z-0" aria-label={`${project.name}の詳細へ`} />
       <div className="pointer-events-none relative z-10 flex h-full min-h-[220px] flex-col">
         <CardHeader className="px-5 pb-3 pt-5">
@@ -51,11 +44,10 @@ export function ProjectCard({ project, dragHandle, editButton, isDragging = fals
         </CardContent>
       </div>
       {editButton && (
-        <div className="absolute left-4 top-4 z-10">
+        <div className="absolute right-4 top-4 z-10">
           {editButton}
         </div>
       )}
-      {dragHandle}
     </Card>
   )
 }
