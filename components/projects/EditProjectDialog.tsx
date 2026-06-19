@@ -8,8 +8,10 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select'
+import { STATUS_OPTIONS, STATUS_LABELS } from '@/lib/status'
 import { cn } from '@/lib/utils'
-import type { Project } from '@/types'
+import type { Project, ProjectStatus } from '@/types'
 
 interface EditProjectDialogProps {
   project: Project
@@ -20,6 +22,7 @@ export function EditProjectDialog({ project, iconOnly = false }: EditProjectDial
   const [open, setOpen] = useState(false)
   const [name, setName] = useState(project.name)
   const [client, setClient] = useState(project.client)
+  const [status, setStatus] = useState<ProjectStatus>(project.status)
   const [figmaUrl, setFigmaUrl] = useState(project.figma_url ?? '')
   const [stagingUrl, setStagingUrl] = useState(project.staging_url ?? '')
   const [productionUrl, setProductionUrl] = useState(project.production_url ?? '')
@@ -29,6 +32,7 @@ export function EditProjectDialog({ project, iconOnly = false }: EditProjectDial
   function resetForm() {
     setName(project.name)
     setClient(project.client)
+    setStatus(project.status)
     setFigmaUrl(project.figma_url ?? '')
     setStagingUrl(project.staging_url ?? '')
     setProductionUrl(project.production_url ?? '')
@@ -41,9 +45,11 @@ export function EditProjectDialog({ project, iconOnly = false }: EditProjectDial
     await supabase.from('projects').update({
       name,
       client,
+      status,
       figma_url: figmaUrl || null,
       staging_url: stagingUrl || null,
       production_url: productionUrl || null,
+      updated_at: new Date().toISOString(),
     }).eq('id', project.id)
     setLoading(false)
     setOpen(false)
@@ -76,6 +82,17 @@ export function EditProjectDialog({ project, iconOnly = false }: EditProjectDial
           <div className="space-y-2">
             <Label htmlFor="edit-client">クライアント名 *</Label>
             <Input id="edit-client" value={client} onChange={(e) => setClient(e.target.value)} required />
+          </div>
+          <div className="space-y-2">
+            <Label>ステータス</Label>
+            <Select value={status} onValueChange={(v) => v && setStatus(v as ProjectStatus)}>
+              <SelectTrigger><span>{STATUS_LABELS[status]}</span></SelectTrigger>
+              <SelectContent>
+                {STATUS_OPTIONS.map((opt) => (
+                  <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
           <div className="space-y-2">
             <Label htmlFor="edit-figma">Figma URL</Label>
