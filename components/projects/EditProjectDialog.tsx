@@ -99,10 +99,6 @@ export function EditProjectDialog({ project, iconOnly = false }: EditProjectDial
             <Input id="edit-figma" type="url" value={figmaUrl} onChange={(e) => setFigmaUrl(e.target.value)} placeholder="https://figma.com/..." />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="edit-staging">Staging URL</Label>
-            <Input id="edit-staging" type="url" value={stagingUrl} onChange={(e) => setStagingUrl(e.target.value)} placeholder="https://..." />
-          </div>
-          <div className="space-y-2">
             <Label htmlFor="edit-production">本番 URL</Label>
             <Input id="edit-production" type="url" value={productionUrl} onChange={(e) => setProductionUrl(e.target.value)} placeholder="https://..." />
           </div>

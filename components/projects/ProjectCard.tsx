@@ -39,7 +39,18 @@ export function ProjectCard({ project, editButton }: ProjectCardProps) {
               </a>
             )}
             {project.staging_url && <span className="rounded-[6px] border border-black/5 bg-[#f5f5f7] px-2.5 py-1 text-xs font-medium text-[#515154]">Staging</span>}
-            {project.production_url && <span className="rounded-[6px] border border-black/5 bg-[#f5f5f7] px-2.5 py-1 text-xs font-medium text-[#515154]">本番</span>}
+            {project.production_url && (
+              <a
+                href={project.production_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pointer-events-auto inline-flex items-center gap-1.5 py-1 text-xs font-medium text-[#515154] transition hover:text-[#8a8a8f] hover:opacity-80"
+                aria-label={`${project.name}の本番サイトを開く`}
+              >
+                <span>本番URL</span>
+                <img src="/link.svg" alt="" className="size-3" aria-hidden="true" />
+              </a>
+            )}
           </div>
         </CardContent>
       </div>
