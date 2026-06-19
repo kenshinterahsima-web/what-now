@@ -1,6 +1,3 @@
-'use client'
-
-import { useMemo, useState } from 'react'
 import type { Project } from '@/types'
 import { ProjectCard } from '@/components/projects/ProjectCard'
 import { EditProjectDialog } from '@/components/projects/EditProjectDialog'
@@ -11,8 +8,8 @@ interface ProjectBoardProps {
 }
 
 export function ProjectBoard({ activeProjects, doneProjects }: ProjectBoardProps) {
-  const [active] = useState(activeProjects)
-  const done = useMemo(() => doneProjects, [doneProjects])
+  const active = activeProjects
+  const done = doneProjects
 
   return (
     <div className="space-y-12">
