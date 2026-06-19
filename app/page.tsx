@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic'
 
 export default async function HomePage() {
   const supabase = await createClient()
-  const { data: projects } = await supabase.from('projects').select('*').order('updated_at', { ascending: false })
+  const { data: projects } = await supabase.from('projects').select('*').order('created_at', { ascending: true })
   const all = (projects as Project[] | null) ?? []
   const active = all.filter((p) => p.status !== 'done')
   const done = all.filter((p) => p.status === 'done')

@@ -44,7 +44,6 @@ export function EditProjectDialog({ project, iconOnly = false }: EditProjectDial
       figma_url: figmaUrl || null,
       staging_url: stagingUrl || null,
       production_url: productionUrl || null,
-      updated_at: new Date().toISOString(),
     }).eq('id', project.id)
     setLoading(false)
     setOpen(false)
