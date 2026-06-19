@@ -7,6 +7,7 @@ import { StatusSelector } from '@/components/projects/StatusSelector'
 import { LogForm } from '@/components/projects/LogForm'
 import { LogList } from '@/components/projects/LogList'
 import { NewProjectDialog } from '@/components/projects/NewProjectDialog'
+import { EditProjectDialog } from '@/components/projects/EditProjectDialog'
 import { LogoutButton } from '@/components/LogoutButton'
 
 export const dynamic = 'force-dynamic'
@@ -39,6 +40,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </Link>
 
           <div className="flex w-full items-start gap-3 md:mt-auto md:flex-col">
+            <EditProjectDialog project={p} />
             <NewProjectDialog triggerClassName="h-12 w-full justify-start rounded-[6px] px-4 text-left text-sm font-semibold shadow-[0_12px_30px_rgba(0,0,0,0.08)]" />
             <LogoutButton className="h-10 w-full justify-start rounded-[6px] px-4 text-left text-sm text-[#6e6e73] hover:text-[#1d1d1f]" />
           </div>
